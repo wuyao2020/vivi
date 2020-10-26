@@ -1,0 +1,97 @@
+{
+    "base":{
+        "absolutePath":     "/home/wuyao/mfix/fluid_bed_tfm_2d/VTU/",
+        "filePrefix":       "FB2D_",
+        "serialLength":     4,
+
+        "meshsize":         [20,100],
+
+        "fontPath":         "/home/wuyao/.local/share/fonts/TimesNewRoman.ttf",
+        "fontsize":         12,
+
+        "outFormat":        "jpg",
+        "dpi":              300,
+
+        "timeUnit":         "s",
+        "timeHigh":         1,
+
+        "axis":             "off",
+
+        "override":         false
+    },
+     
+    "vtu2mat":{
+        "subDirectory": "vtu2mat/",
+        "indexLoop":    [0, 1, 200],
+        "keyLoop": ["EP_G", "P_G","Gas_Velocity"]
+    },
+
+    "key":{
+        "name":         "P_G",
+        "dimension":    1,
+        "epg2eps":          false
+    },
+
+    "colorBar":{
+        "barLacation":  [0.05, 0.25, 0.02, 0.5],
+        "barMin":       100000,
+        "barMinStr":    "$+10^5\\,Pa$",
+        "vmin":         0,
+        "vmax":         8000
+    },
+
+    "viTimeCloud":{
+        "subDirectory": "viTimeCloud/",
+        "figsize":      [9,6],
+        "plotRowCol":   [2,10],
+        "indexLoop":    [0,10,200],
+        "timeInterval":     0.01,
+        "timeStart":    0.5,
+        "timeFlag":     true,
+        "timeStrLength":    4,
+
+        "note": {
+            "depandency": ["vtu2mat", "key", "colorBar"]
+        }
+    },
+
+    "viCloud":{
+        "subDirectory": "viCloud/",
+        "figsize":      [4,6],
+        "indexLoop":    [0,1,200],
+        "timeInterval":     0.01,
+        "timeStart":    0.0,
+        "timeFlag":     true,
+        "timeStrLength":    4,
+
+        "note": {
+            "depandency": ["vtu2mat", "key", "colorBar", "viTimeCloud"]
+        }
+    },
+
+    "viJointCloud":
+    {
+        "jointNumber":      2,
+        "directoryList":    ["1","2"],
+        "outPath":          "xx"
+    },
+    
+    "viAnimation":{
+        "note":     "use ffmpeg",
+        "eg1":      "ffmpeg -f image2 -r 10 -i ./EP_G/EP_G%4d.jpg -vcodec libx264 ./EP_G.mp4 -y",
+        "eg1-note": "          format  flps   input                   h.624      outfile     yes"
+    },
+
+    "viVector":{
+
+    },
+
+    "software": {
+        "name":    "vivi",
+        "author":   "wuyao",
+        "email":    "wuyao1997@qq.com",
+        "date":     "2020.10",
+        "version":  "1.0",
+        "slogan":  "Life is short"
+    }
+}

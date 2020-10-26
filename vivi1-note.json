@@ -1,0 +1,58 @@
+{
+    "key":{
+        "key1":{
+            "name":         "P_G",
+            "dimension":    1,
+            "epg2eps":          false
+        },
+        "key2":{
+            "name":         "EP_G",
+            "dimension":    1,
+            "epg2eps":          true
+        },
+        "key3":{
+            "name":         "Gas_Velocity",
+            "dimension":    3,
+            "epg2eps":          false
+        }
+    },
+
+
+    "colorBar":{
+        "P_G":{
+            "barMin":       100000,
+            "barMinStr":    "$+10^5\\,Pa$",
+            "vmin":         0,
+            "vmax":         8000
+        },
+        "EP_G":{
+            "barMin":       0,
+            "barMinStr":    " ",
+            "vmin":         0,
+            "vmax":         0.6
+        },
+        "Gas_Velocity":{
+            "barMin":       0,
+            "barMinStr":    "$m/s$",
+            "vmin":         0,
+            "vmax":         1
+        }
+    },
+
+
+    "viAnimation":{
+        "note":     "use ffmpeg",
+        "eg-note": "          format  flps   input                   h.624      outfile     yes",
+        "eg1":      "ffmpeg -f image2 -r 10 -i ./P_G/P_G%4d.jpg -vcodec libx264 ./P_G.mp4 -y",
+        "eg2":      "ffmpeg -f image2 -r 10 -i ./EP_G/EP_G%4d.jpg -vcodec libx264 ./EP_G.mp4 -y",
+        "eg3":      "ffmpeg -f image2 -r 10 -i ./Gas_Velocity/Gas_Velocity%4d.jpg -vcodec libx264 ./Gas_Velocity.mp4 -y"
+    }
+
+
+
+
+
+
+
+
+}
